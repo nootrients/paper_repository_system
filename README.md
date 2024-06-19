@@ -21,4 +21,7 @@ This is a side project to do during free time. It is intended to serve as a mini
 ### Students
 1. Profile Management
 2. Group Assignation and Invite
-3. File Request Portal
+3. View Research Papers
+4. File Request Portal
+
+### Adapting and learning TDD while developing the project.
