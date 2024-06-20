@@ -127,7 +127,7 @@ class UserProfile(models.Model):
     contact_number = models.CharField(
         verbose_name="Contact Number", max_length=16, help_text="+63-xxx-xxxx-xxx"
     )
-    gender_id = models.ForeignKey(Gender, on_delete=models.CASCADE)
+    gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
     permanent_address = models.TextField(
         verbose_name="Permanent Address",
         max_length=255,
