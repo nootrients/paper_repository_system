@@ -31,20 +31,22 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, email, role, password=None, **extra_fields):
+    def create_superuser(
+        self, username, email_address, role, password=None, **extra_fields
+    ):
         """
         Create, save, and return a new User that is Superuser.
         """
 
-        extra_fields.setDefault("is_staff", True)
-        extra_fields.setDefault("is_superuser", True)
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError("Superuser must have `is_staff` = True.")
         if extra_fields.get("is_superuser") is not True:
             raise ValueError("Superuser must have `is_superuser` = True.")
 
-        return self.create_user(username, email, role, password, **extra_fields)
+        return self.create_user(username, email_address, role, password, **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -130,4 +132,4 @@ class UserProfile(models.Model):
     )
 
     def __str__(self):
-        return f"{self.user.username} - {self.first_name} {self.middle_name} {self.last_name}"
+        return self.user.username

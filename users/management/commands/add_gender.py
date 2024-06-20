@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from models import Gender
+from users.models import Gender
 
 
 class Command(BaseCommand):
