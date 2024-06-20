@@ -102,6 +102,9 @@ class Gender(models.Model):
 
     gender_name = models.CharField(verbose_name="Gender", max_length=20)
 
+    def __str__(self):
+        return self.gender_name
+
 
 class UserProfile(models.Model):
     """
