@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import UniversityBranch
+from .models import Department, Course
 
 # Register your models here.
-admin.site.register(UniversityBranch)
+admin.site.register(Department)
+admin.site.register(Course)
