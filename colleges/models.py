@@ -29,25 +29,17 @@ class Department(models.Model):
         return self.name
 
 
-# class BranchDepartment(models.Model):
-#     branch = models.ForeignKey(
-#         UniversityBranch, on_delete=models.CASCADE, related_name="branch_departments"
-#     )
-#     department = models.ForeignKey(
-#         Department, on_delete=models.CASCADE, related_name="branch_departments"
-#     )
-#     email_address = models.EmailField(verbose_name="Email Address", max_length=50)
-#     contact_number = models.CharField(verbose_name="Contact Number", max_length=20)
+class BranchDepartment(models.Model):
+    branch = models.ForeignKey(UniversityBranch, on_delete=models.CASCADE, related_name="branch_departments")
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="branch_departments")
 
-#     def __str__(self):
-#         return f"{self.branch.name} - {self.department.name}"
+    def __str__(self):
+        return f"{self.branch.name} - {self.department.name}"
 
 
 class Course(models.Model):
     title = models.CharField(verbose_name="Course", max_length=200)
-    # branch_department = models.ForeignKey(
-    #     BranchDepartment, on_delete=models.CASCADE, related_name="courses"
-    # )
+    # branch_department = models.ForeignKey(BranchDepartment, on_delete=models.CASCADE, related_name="courses")
 
     def __str__(self):
         return self.course_name

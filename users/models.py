@@ -66,16 +66,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         unique=True,
         help_text="Student or Faculty ID Number",
     )
-    email_address = models.EmailField(
-        verbose_name="Email Address", max_length=100, unique=True
-    )
+    email_address = models.EmailField(verbose_name="Email Address", max_length=100, unique=True)
     role = models.CharField(verbose_name="Role", max_length=50, choices=Role.choices)
     is_active = models.BooleanField(verbose_name="Active", default=True)
     is_staff = models.BooleanField(verbose_name="Staff Status", default=False)
     date_joined = models.DateField(verbose_name="Date Joined", auto_now_add=True)
-    updated_at = models.DateTimeField(
-        verbose_name="Updated At", auto_now=True, blank=False
-    )
+    updated_at = models.DateTimeField(verbose_name="Updated At", auto_now=True, blank=False)
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email_address", "role"]
@@ -113,9 +109,7 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     first_name = models.CharField(verbose_name="First Name", max_length=50, blank=False)
-    middle_name = models.CharField(
-        verbose_name="Middle Name", max_length=50, blank=False
-    )
+    middle_name = models.CharField(verbose_name="Middle Name", max_length=50, blank=False)
     last_name = models.CharField(verbose_name="Last Name", max_length=50, blank=False)
     suffix = models.CharField(
         verbose_name="Suffix",
@@ -124,9 +118,7 @@ class UserProfile(models.Model):
         help_text="Name suffix e.g. I, II, III. Leave blank if none.",
     )
     date_of_birth = models.DateField(verbose_name="Birthdate")
-    contact_number = models.CharField(
-        verbose_name="Contact Number", max_length=16, help_text="+63-xxx-xxxx-xxx"
-    )
+    contact_number = models.CharField(verbose_name="Contact Number", max_length=16, help_text="+63-xxx-xxxx-xxx")
     gender = models.ForeignKey(Gender, on_delete=models.CASCADE)
     permanent_address = models.TextField(
         verbose_name="Permanent Address",
