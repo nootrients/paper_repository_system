@@ -30,8 +30,15 @@ class Department(models.Model):
 
 
 class BranchDepartment(models.Model):
-    branch = models.ForeignKey(UniversityBranch, on_delete=models.CASCADE, related_name="branch_departments")
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name="branch_departments")
+    branch = models.ForeignKey(
+        UniversityBranch, on_delete=models.CASCADE, related_name="branch_departments"
+    )
+    department = models.ForeignKey(
+        Department, on_delete=models.CASCADE, related_name="branch_departments"
+    )
+
+    class Meta:
+        verbose_name_plural = "Branch Departments"
 
     def __str__(self):
         return f"{self.branch.name} - {self.department.name}"
